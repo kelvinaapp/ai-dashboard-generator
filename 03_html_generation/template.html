@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-7xl mx-auto bg-white rounded-lg shadow-lg p-6">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Dashboard Report</h1>
+        
+        <!-- Area Render Data -->
+        <div id="data-container"></div>
+        
+        <!-- Container Chart agar responsif -->
+        <div class="relative mt-8 h-96">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Inject data aman lewat JSON script block -->
+    <script id="dashboard-data" type="application/json">
+        {{ dashboard_data | tojson | safe }}
+    </script>
+
+    <script>
+        // Parsing data dari script block
+        const rawData = JSON.parse(document.getElementById('dashboard-data').textContent);
+        
+        console.log("Data berhasil di-load:", rawData);
+        
+        // TODO untuk Claude Code: Tulis logika JavaScript untuk merender rawData ke tabel HTML dan Chart.js
+    </script>
+</body>
+</html>
