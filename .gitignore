@@ -1,0 +1,24 @@
+# --- Privacy-sensitive data (raw & processed business/employee data) ---
+01_raw_to_schema/data_raw/
+01_raw_to_schema/output/
+02_schema_to_dashboard/output/
+03_html_generation/output/
+*.xlsx
+*.xls
+*.csv
+!**/template*.xlsx
+
+# --- Generated / cache artifacts ---
+graphify-out/
+__pycache__/
+*.pyc
+
+# --- Environment / secrets ---
+.env
+.env.*
+*.key
+
+# --- Editor / OS ---
+.vscode/
+.DS_Store
+Thumbs.db
