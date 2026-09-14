@@ -1,8 +1,22 @@
-# Tujuan Stage 01: Raw to Schema
-Tugas kamu di folder ini adalah membaca `data_raw.xlsx` dan membersihkannya menjadi `data_schema.xlsx` di dalam folder `/output`.
+# Stage 01: Raw Data Exploration & Schema Standardization
 
-**Aturan Pembersihan:**
-1. Hapus baris yang kosong (Missing Values) pada kolom esensial (seperti ID Toko, Nama, Kategori).
-2. Standarisasi format tanggal menjadi YYYY-MM-DD.
-3. Pastikan tipe data kuantitatif (seperti target dan aktual) diformat sebagai numerik (Float/Integer).
-4. Tulis hasil akhirnya menggunakan Pandas ke `output/data_schema.xlsx` tanpa menyertakan index.
+## Document Status
+Living Document (Diperbarui oleh AI/PM setelah eksplorasi data mentah selesai dan disetujui User).
+
+## Purpose
+Membaca seluruh file Excel di `./data_raw/`, mengeksplorasi struktur data asli, serta menyusun skema data tunggal yang terintegrasi, bersih, dan konsisten.
+
+## Input & Output Surface
+* **Input Directory:** `./data_raw/` (berisi kumpulan file Excel mentah).
+* **Script Executor:** `etl_cleaner.py`
+* **Output File:** `./output/data_schema.xlsx`
+
+## Operating Rules
+1. **Multi-File Detection:** Sistem harus otomatis membaca semua file `.xlsx` / `.xls` di folder `./data_raw/`.
+2. **Standardization Protocol:**
+   - Penyeragaman header kolom menjadi `lowercase` dengan `underscore` (contoh: `Store Name` -> `store_name`).
+   - Penyeragaman format tanggal ke `YYYY-MM-DD`.
+   - Pembersihan duplikasi data berdasarkan kunci ID unik.
+   - Handling nilai `NULL`/kosong pada angka kuantitatif (defaulting ke 0 jika relevan).
+3. **Human-in-the-Loop Constraint:**
+   - DILARANG membuat/menjalankan script `etl_cleaner.py` sebelum skema gabungan yang diusulkan mendapatkan persetujuan dari User/PM.
